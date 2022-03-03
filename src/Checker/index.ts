@@ -13,6 +13,10 @@ export class Checker {
 	private alive: string[] = [];
 	private dying: string[] = [];
 	private error: string[] = [];
+	private proxy = {
+		ip: "23.108.47.124:80",
+		auth: "ocelot:oempg4uvlf"
+	};
 
 	constructor(options: {
 		targets: string[]
@@ -84,12 +88,27 @@ export class Checker {
 	private async checkTarget(url: string): Promise<TARGET_STATUSES> {
 		const startTime = (new Date()).valueOf();
 		let resultStatus = TARGET_STATUSES.ERROR;
-		//TODO proxy
+
+		const proxyAddressSplit = this.proxy.ip.split(':')
+		const proxyIP = proxyAddressSplit[0]
+		const proxyPort = parseInt(proxyAddressSplit[1])
+		const proxyAuthSplit = this.proxy.auth.split(':')
+		const proxyUsername = proxyAuthSplit[0]
+		const proxyPassword = proxyAuthSplit[1]
+
 		const request = axios({
 			url,
 			method: "get",
 			timeout: 10000,
-			validateStatus: () => true
+			validateStatus: () => true,
+			proxy: {
+				host: proxyIP,
+				port: proxyPort,
+				auth: {
+					username: proxyUsername,
+					password: proxyPassword
+				}
+			}
 		});
 
 		try{

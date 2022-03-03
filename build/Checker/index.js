@@ -54,6 +54,10 @@ var Checker = /** @class */ (function () {
         this.alive = [];
         this.dying = [];
         this.error = [];
+        this.proxy = {
+            ip: "23.108.47.124:80",
+            auth: "ocelot:oempg4uvlf"
+        };
         this.targets = options.targets;
     }
     /**
@@ -123,17 +127,31 @@ var Checker = /** @class */ (function () {
     };
     Checker.prototype.checkTarget = function (url) {
         return __awaiter(this, void 0, void 0, function () {
-            var startTime, resultStatus, request, response, endTime, requestTime, requestStatus, e_1;
+            var startTime, resultStatus, proxyAddressSplit, proxyIP, proxyPort, proxyAuthSplit, proxyUsername, proxyPassword, request, response, endTime, requestTime, requestStatus, e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         startTime = (new Date()).valueOf();
                         resultStatus = globals_1.TARGET_STATUSES.ERROR;
+                        proxyAddressSplit = this.proxy.ip.split(':');
+                        proxyIP = proxyAddressSplit[0];
+                        proxyPort = parseInt(proxyAddressSplit[1]);
+                        proxyAuthSplit = this.proxy.auth.split(':');
+                        proxyUsername = proxyAuthSplit[0];
+                        proxyPassword = proxyAuthSplit[1];
                         request = (0, axios_1.default)({
                             url: url,
                             method: "get",
                             timeout: 10000,
-                            validateStatus: function () { return true; }
+                            validateStatus: function () { return true; },
+                            proxy: {
+                                host: proxyIP,
+                                port: proxyPort,
+                                auth: {
+                                    username: proxyUsername,
+                                    password: proxyPassword
+                                }
+                            }
                         });
                         _a.label = 1;
                     case 1:

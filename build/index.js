@@ -59,7 +59,6 @@ function printTargets() {
                     checker.getDead().forEach(function (target) { return console.log(target); });
                     console.log('\nError: ');
                     checker.getError().forEach(function (target) { return console.log(target); });
-                    console.log('End: ', checker);
                     return [2 /*return*/];
             }
         });

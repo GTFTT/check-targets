@@ -15,6 +15,7 @@ var FileGenerator = /** @class */ (function () {
         this.countPerChunk = 10; //Count of targets per docker-file
         this.SAVE_DIR = 'attackTargets/lists';
         this.FILE_NAME = 'docker-compose.yml';
+        this.LISTS_COUNT_FILE_NAME = 'lists_count.txt';
         this.targets = options.targets;
     }
     FileGenerator.prototype.generateAndSave = function () {
@@ -36,12 +37,16 @@ var FileGenerator = /** @class */ (function () {
             console.log('Saving into file: ', filepath);
             // Remove old files
             fs_1.default.rm(_this.SAVE_DIR, { recursive: true }, function () {
-                // Creates directory if it is missing
-                fs_1.default.mkdir(directory, { recursive: true }, function (err) {
-                    if (err)
-                        throw err;
-                    //Save file
-                    fs_1.default.writeFileSync(filepath, fileContent);
+                fs_1.default.mkdir(_this.SAVE_DIR, { recursive: true }, function () {
+                    // Creates directory if it is missing
+                    fs_1.default.mkdir(directory, { recursive: true }, function (err) {
+                        if (err)
+                            throw err;
+                        //Save file
+                        fs_1.default.writeFileSync(filepath, fileContent);
+                    });
+                    var countFileContent = "".concat(chunks.length);
+                    fs_1.default.writeFileSync("".concat(_this.SAVE_DIR, "/").concat(_this.LISTS_COUNT_FILE_NAME), countFileContent);
                 });
             });
         });

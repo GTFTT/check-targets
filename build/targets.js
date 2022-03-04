@@ -5,8 +5,6 @@ exports.targets = void 0;
  * All targets must include http:// or https://
  */
 exports.targets = [
-    "http://gtftt-towertonia.ml/",
-    "http://sukyi.gtftt-towertonia.ml/",
     "http://sber.ru/",
     "https://lenta.ru/",
     "https://ria.ru/",

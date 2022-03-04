@@ -1,5 +1,6 @@
 import {Checker} from "./Checker";
 import {targets} from "./targets";
+import {FileGenerator} from "./FileGenerator";
 
 const checker = new Checker({
 	targets: targets,
@@ -20,7 +21,11 @@ async function printTargets() {
 	checker.getDead().forEach(target => console.log(target))
 
 	console.log('\nError: ');
-	checker.getError().forEach(target => console.log(target))
+	checker.getError().forEach(target => console.log(target));
+
+	//Saving
+	const gen = new FileGenerator({targets});
+	gen.generateAndSave();
 
 	// console.log('End: ', checker);
 }

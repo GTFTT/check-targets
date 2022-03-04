@@ -38,11 +38,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var Checker_1 = require("./Checker");
 var targets_1 = require("./targets");
+var FileGenerator_1 = require("./FileGenerator");
 var checker = new Checker_1.Checker({
     targets: targets_1.targets,
 });
 function printTargets() {
     return __awaiter(this, void 0, void 0, function () {
+        var gen;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -59,6 +61,8 @@ function printTargets() {
                     checker.getDead().forEach(function (target) { return console.log(target); });
                     console.log('\nError: ');
                     checker.getError().forEach(function (target) { return console.log(target); });
+                    gen = new FileGenerator_1.FileGenerator({ targets: targets_1.targets });
+                    gen.generateAndSave();
                     return [2 /*return*/];
             }
         });

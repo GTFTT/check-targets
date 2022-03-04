@@ -16,9 +16,11 @@ var FileGenerator = /** @class */ (function () {
         this.targets = [];
         this.countPerChunk = 10; //Count of targets per docker-file
         this.SAVE_DIR = 'attackTargets/lists';
+        this.DEFAULT_OUTPUT_DIR = 'attackTargets/lists';
         this.FILE_NAME = 'docker-compose.yml';
         this.LISTS_COUNT_FILE_NAME = 'lists_count.txt';
         console.log('OUTPUT_DIRECTORY: ', process.env.OUTPUT_DIRECTORY);
+        this.SAVE_DIR = process.env.OUTPUT_DIRECTORY || this.DEFAULT_OUTPUT_DIR;
         this.targets = options.targets;
     }
     FileGenerator.prototype.generateAndSave = function () {

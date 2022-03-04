@@ -2,6 +2,9 @@ import {Checker} from "./Checker";
 import {targets} from "./targets";
 import {FileGenerator} from "./FileGenerator";
 
+// Configure .env variables
+require('dotenv').config();
+
 const checker = new Checker({
 	targets: targets,
 });

@@ -18,6 +18,7 @@ var FileGenerator = /** @class */ (function () {
         this.SAVE_DIR = 'attackTargets/lists';
         this.FILE_NAME = 'docker-compose.yml';
         this.LISTS_COUNT_FILE_NAME = 'lists_count.txt';
+        console.log('OUTPUT_DIRECTORY: ', process.env.OUTPUT_DIRECTORY);
         this.targets = options.targets;
     }
     FileGenerator.prototype.generateAndSave = function () {

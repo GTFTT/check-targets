@@ -39,6 +39,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Checker_1 = require("./Checker");
 var targets_1 = require("./targets");
 var FileGenerator_1 = require("./FileGenerator");
+// Configure .env variables
+require('dotenv').config();
 var checker = new Checker_1.Checker({
     targets: targets_1.targets,
 });

@@ -4,6 +4,9 @@ node_modules
 attackTargets
 logs
 
+# Environment
+.env
+
 # Quasar core related directories
 .quasar
 /dist

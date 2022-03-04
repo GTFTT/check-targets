@@ -14,13 +14,15 @@ var lodash_1 = __importDefault(require("lodash"));
 var FileGenerator = /** @class */ (function () {
     function FileGenerator(options) {
         this.targets = [];
-        this.countPerChunk = 10; //Count of targets per docker-file
-        this.SAVE_DIR = 'attackTargets/lists';
         this.DEFAULT_OUTPUT_DIR = 'attackTargets/lists';
+        this.DEFAULT_COUNT_PER_CHUNK = 10;
         this.FILE_NAME = 'docker-compose.yml';
         this.LISTS_COUNT_FILE_NAME = 'lists_count.txt';
-        console.log('OUTPUT_DIRECTORY: ', process.env.OUTPUT_DIRECTORY);
         this.SAVE_DIR = process.env.OUTPUT_DIRECTORY || this.DEFAULT_OUTPUT_DIR;
+        this.countPerChunk = Number(process.env.COUNT_PER_CHUNK) || this.DEFAULT_COUNT_PER_CHUNK;
+        console.log('Date: ', new Date());
+        console.log('Save directory: ', this.SAVE_DIR);
+        console.log('count per chunk: ', this.countPerChunk);
         this.targets = options.targets;
     }
     FileGenerator.prototype.generateAndSave = function () {

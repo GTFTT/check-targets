@@ -9,18 +9,22 @@ import _ from "lodash";
 export class FileGenerator {
     private targets: string[] = [];
 
-    private countPerChunk = 10; //Count of targets per docker-file
-    private SAVE_DIR = 'attackTargets/lists';
+    private countPerChunk: number; //Count of targets per docker-file
+    private SAVE_DIR: string;
 
     private DEFAULT_OUTPUT_DIR = 'attackTargets/lists';
+    private DEFAULT_COUNT_PER_CHUNK = 10;
     private FILE_NAME = 'docker-compose.yml';
     private LISTS_COUNT_FILE_NAME = 'lists_count.txt';
 
     constructor(options: {
         targets: string[],
     }) {
-        console.log('OUTPUT_DIRECTORY: ', process.env.OUTPUT_DIRECTORY);
         this.SAVE_DIR = process.env.OUTPUT_DIRECTORY || this.DEFAULT_OUTPUT_DIR;
+        this.countPerChunk = Number(process.env.COUNT_PER_CHUNK) || this.DEFAULT_COUNT_PER_CHUNK;
+        console.log('Date: ', new Date());
+        console.log('Save directory: ', this.SAVE_DIR);
+        console.log('count per chunk: ', this.countPerChunk);
         this.targets = options.targets;
     }
 

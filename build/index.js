@@ -70,4 +70,7 @@ function printTargets() {
         });
     });
 }
-printTargets().then(function () { return console.log('Printing finished;'); });
+printTargets().then(function () {
+    console.log('Printing finished;');
+    console.log("----------------------------------------------------------");
+});

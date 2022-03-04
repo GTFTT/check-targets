@@ -34,4 +34,7 @@ async function printTargets() {
 }
 
 
-printTargets().then(() => console.log('Printing finished;'))
+printTargets().then(() => {
+	console.log('Printing finished;')
+	console.log("----------------------------------------------------------")
+});

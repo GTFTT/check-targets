@@ -2,8 +2,6 @@
  * All targets must include http:// or https://
  */
 export const targets = [
-	"http://gtftt-towertonia.ml/", //TODO Remove!!! this is important, this is mine
-	"http://sukyi.gtftt-towertonia.ml/", //TODO Remove!!! this is important, this is mine
 	"http://sber.ru/",
 	"https://lenta.ru/",
 	"https://ria.ru/",

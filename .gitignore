@@ -2,6 +2,7 @@
 .thumbs.db
 node_modules
 attackTargets
+logs
 
 # Quasar core related directories
 .quasar

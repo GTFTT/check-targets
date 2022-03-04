@@ -1,16 +1,20 @@
 import {Checker} from "./Checker";
-import {targets} from "./targets";
+import {importantTargets} from "./targets/importantTargets";
+import {otherTargets} from "./targets/otherTargets";
 import {FileGenerator} from "./FileGenerator";
+import _ from "lodash";
 
 // Configure .env variables
 require('dotenv').config();
 
+const uniqueTargets: string[] = _.uniq([...importantTargets, ...otherTargets]);
+
 const checker = new Checker({
-	targets: targets,
+	targets: uniqueTargets,
 });
 
 async function printTargets() {
-	console.log('Checking for targets...');
+	console.log('Checking for importantTargets...');
 	await checker.start();
 	console.log('Done;');
 
@@ -27,7 +31,7 @@ async function printTargets() {
 	checker.getError().forEach(target => console.log(target));
 
 	//Saving
-	const gen = new FileGenerator({targets});
+	const gen = new FileGenerator({targets: importantTargets});
 	gen.generateAndSave();
 
 	// console.log('End: ', checker);

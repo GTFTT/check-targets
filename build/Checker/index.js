@@ -43,7 +43,7 @@ exports.Checker = void 0;
 var axios_1 = __importDefault(require("axios"));
 var globals_1 = require("../globals");
 /**
- * Used to check targets.
+ * Used to check importantTargets.
  * Remember that you need to call start and after was done you can use results.
  * Remember that axios requires http:// before URL else it returns `econnrefused` error
  */
@@ -61,13 +61,13 @@ var Checker = /** @class */ (function () {
         this.targets = options.targets;
     }
     /**
-     * Alive targets should be attacked
+     * Alive importantTargets should be attacked
      */
     Checker.prototype.getAlive = function () {
         return this.alive;
     };
     /**
-     * Dying targets are not putted down completely, but it can be fixed
+     * Dying importantTargets are not putted down completely, but it can be fixed
      */
     Checker.prototype.getDying = function () {
         return this.dying;

@@ -35,14 +35,29 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var Checker_1 = require("./Checker");
-var targets_1 = require("./targets");
+var importantTargets_1 = require("./targets/importantTargets");
+var otherTargets_1 = require("./targets/otherTargets");
 var FileGenerator_1 = require("./FileGenerator");
+var lodash_1 = __importDefault(require("lodash"));
 // Configure .env variables
 require('dotenv').config();
+var uniqueTargets = lodash_1.default.uniq(__spreadArray(__spreadArray([], importantTargets_1.importantTargets, true), otherTargets_1.otherTargets, true));
 var checker = new Checker_1.Checker({
-    targets: targets_1.targets,
+    targets: uniqueTargets,
 });
 function printTargets() {
     return __awaiter(this, void 0, void 0, function () {
@@ -50,7 +65,7 @@ function printTargets() {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log('Checking for targets...');
+                    console.log('Checking for importantTargets...');
                     return [4 /*yield*/, checker.start()];
                 case 1:
                     _a.sent();
@@ -63,7 +78,7 @@ function printTargets() {
                     checker.getDead().forEach(function (target) { return console.log(target); });
                     console.log('\nError: ');
                     checker.getError().forEach(function (target) { return console.log(target); });
-                    gen = new FileGenerator_1.FileGenerator({ targets: targets_1.targets });
+                    gen = new FileGenerator_1.FileGenerator({ targets: importantTargets_1.importantTargets });
                     gen.generateAndSave();
                     return [2 /*return*/];
             }

@@ -9,7 +9,7 @@ import _ from "lodash";
 export class FileGenerator {
     private targets: string[] = [];
 
-    private countPerChunk: number; //Count of targets per docker-file
+    private countPerChunk: number; //Count of importantTargets per docker-file
     private SAVE_DIR: string;
 
     private DEFAULT_OUTPUT_DIR = 'attackTargets/lists';
@@ -22,10 +22,12 @@ export class FileGenerator {
     }) {
         this.SAVE_DIR = process.env.OUTPUT_DIRECTORY || this.DEFAULT_OUTPUT_DIR;
         this.countPerChunk = Number(process.env.COUNT_PER_CHUNK) || this.DEFAULT_COUNT_PER_CHUNK;
+        this.targets = options.targets;
+
         console.log('Date: ', new Date());
         console.log('Save directory: ', this.SAVE_DIR);
-        console.log('count per chunk: ', this.countPerChunk);
-        this.targets = options.targets;
+        console.log('Count per chunk: ', this.countPerChunk);
+        console.log('Targets count: ', this.targets.length);
     }
 
     public generateAndSave() {

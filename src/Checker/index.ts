@@ -2,7 +2,7 @@ import axios from "axios";
 import {ALIVE_MAX_TIME, DYING_MAX_TIME, TARGET_STATUSES} from "../globals";
 
 /**
- * Used to check targets.
+ * Used to check importantTargets.
  * Remember that you need to call start and after was done you can use results.
  * Remember that axios requires http:// before URL else it returns `econnrefused` error
  */
@@ -25,14 +25,14 @@ export class Checker {
 	}
 
 	/**
-	 * Alive targets should be attacked
+	 * Alive importantTargets should be attacked
 	 */
 	public getAlive() {
 		return this.alive;
 	}
 
 	/**
-	 * Dying targets are not putted down completely, but it can be fixed
+	 * Dying importantTargets are not putted down completely, but it can be fixed
 	 */
 	public getDying() {
 		return this.dying;

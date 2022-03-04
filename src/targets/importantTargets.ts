@@ -1,7 +1,7 @@
 /**
- * All targets must include http:// or https://
+ * All importantTargets must include http:// or https://
  */
-export const targets = [
+export const importantTargets = [
 	"http://sber.ru/",
 	"https://lenta.ru/",
 	"https://ria.ru/",
@@ -66,7 +66,38 @@ export const targets = [
 	"https://qrator.net/ru/",
 	"https://qrator.net/ru/",
 
-
+	"https://acs7.sbrf.ru",
+	"https://acs8.sbrf.ru",
+	"https://gazprombank.lu",
+	"https://sber.ru",
+	"https://185.157.96.130",
+	"https://profile.sber.ru",
+	"https://84.252.144.102",
+	"https://ddos-guard.net/ru",
+	"https://stormwall.pro/",
+	"https://qrator.net/ru/",
+	"https://qrator.net/ru/",
+	"https://zakupki.gov.ru/",
+	"https://www.subscribestar.com/iskra/",
+	"https://sberbank-ast.ru/",
+	"https://etp.roseltorg.ru/",
+	"https://zakazrf.ru/",
+	"https://etp-ets.ru/",
+	"https://rts-tender.ru/",
+	"https://gz.lot-online.ru/",
+	"https://tektorg.ru/",
+	"https://etpgpb.ru/",
+	"https://www.gias.by/",
+	"https://butb.by/",
+	"https://goszakupki.by/",
+	"https://www.liveinternet.ru/",
+	"http://cbr.ru/",
+	"https://bg14.org/",
+	"https://mosmetro.ru/",
+	"https://rkn.gov.ru/",
+	"https://nornickel.com/",
+	"https://lukoil.ru/",
+	"https://www.evraz.com/ru/",
 
 	// "",
 ];

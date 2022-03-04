@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.targets = void 0;
+exports.importantTargets = void 0;
 /**
  * All importantTargets must include http:// or https://
  */
-exports.targets = [
+exports.importantTargets = [
     "http://sber.ru/",
     "https://lenta.ru/",
     "https://ria.ru/",

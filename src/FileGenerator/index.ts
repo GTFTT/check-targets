@@ -11,7 +11,7 @@ export class FileGenerator {
 
     private countPerChunk = 10; //Count of targets per docker-file
     private SAVE_DIR = 'attackTargets/lists';
-    
+
     private DEFAULT_OUTPUT_DIR = 'attackTargets/lists';
     private FILE_NAME = 'docker-compose.yml';
     private LISTS_COUNT_FILE_NAME = 'lists_count.txt';
